@@ -1,0 +1,42 @@
+﻿@model List<Data.Club>
+
+@{
+    ViewBag.Title = "Clubes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clubes</h2>
+
+<p>
+    @Html.ActionLink("Agregar Club", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID Club
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idClub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.idClub }) |
+                @Html.ActionLink("Eliminar", "EliminarPorId", new { id = item.idClub })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<button class="btn btn-default">@Html.ActionLink("Volver", "Lista", "Jugadores")</button>

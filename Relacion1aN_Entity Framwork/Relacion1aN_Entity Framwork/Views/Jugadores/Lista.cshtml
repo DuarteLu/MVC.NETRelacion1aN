@@ -1,0 +1,40 @@
+﻿@model List<Data.Jugador>
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista Jugadores</h2>
+
+<table class="table">
+    <tr>
+        <td><strong>Id Jugador</strong></td>
+        <td><strong>Apellido</strong></td>
+        <td><strong>Edad</strong></td>
+        <td><strong>Club</strong></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    @foreach (var j in Model)
+    {
+        <tr>
+            <td>@j.idJugador</td>
+            <td>@j.Apellido</td>
+            <td>@j.Edad</td>
+            <td>@j.Club.Nombre</td>
+            <td>@Html.ActionLink("Modificar", "Modificar", new { id = j.idJugador })</td>
+            <td>@Html.ActionLink("Eliminar", "Eliminar", new { id = j.idJugador })</td>
+        </tr>
+    }
+
+
+</table>
+<div class="form-group">
+   
+        <button class="pull-left btn btn-default">@Html.ActionLink("Ver Lista Clubes", "Lista", "Clubes")</button>
+   
+        <button class="pull-right btn btn-Defa">@Html.ActionLink("Agregar Jugador", "Agregar")</button>
+   
+</div>
+
+
